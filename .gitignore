@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+.venv/
+
+# Secrets — NEVER commit these
+*.key
+*.pem
+secrets.json
+.env.local
+
+# Databricks
+.databricks/
+*.dbc
+
+# Jupyter / Databricks notebooks checkpoints
+.ipynb_checkpoints/
+
+# Azure
+*.tfstate
+*.tfstate.backup
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
