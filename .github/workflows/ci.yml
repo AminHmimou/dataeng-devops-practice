@@ -1,0 +1,36 @@
+# Name of your workflow — shows up on GitHub
+name: CI Pipeline
+
+# TRIGGER — when does this run?
+on:
+  push:
+    branches: [ main, 'feature/**' ]   # on every push to main or any feature branch
+  pull_request:
+    branches: [ main ]                  # on every PR targeting main
+
+# JOBS — what actually runs
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest              # GitHub spins up a fresh Linux VM
+
+    steps:
+      # Step 1 — checkout your code onto the VM
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2 — install Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # Step 3 — install dependencies
+      - name: Install dependencies
+        run: |
+          pip install pytest
+
+      # Step 4 — run your tests
+      - name: Run tests
+        run: |
+          pytest tests/ -v
